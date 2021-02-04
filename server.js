@@ -1,15 +1,16 @@
 //Install express server
 const express = require('express');
-const path = require('path');
-
 const app = express();
+const PORT = process.env.PORT || 8080;
+const path = require('path');
+const app_path = './dist/ng11-template';
 
 // Serve only the static files form the dist directory
-app.use(express.static('./dist/ng11-taskprogressApp-heroku-deploy'));
+app.use('/', express.static(path.join(__dirname, app_path)));
 
 app.get('/*', (req, res) =>
-    res.sendFile('index.html', {root: 'dist/ng11-taskprogressApp-heroku-deploy/'}),
+    res.sendFile(path.join(__dirname, app_path + 'index.html')),
 );
 
 // Start the app by listening on the default Heroku port
-app.listen(process.env.PORT || 8080);
+app.listen(PORT, ()=> console.log(`app listening to ${PORT}`));
