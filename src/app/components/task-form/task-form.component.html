@@ -1,0 +1,25 @@
+<div class="container">
+    <div class="row">
+        <div class="col">
+            <!-- task form -->
+            <mat-card class="mt-3">
+                <h3 class="text-center">Add Your Task</h3>
+                <form class="example-form"  [formGroup]="_TaskForm" (ngSubmit)="onSubmit()">
+                    <mat-form-field class="example-full-width">
+                        <mat-label>Title</mat-label>
+                        <input matInput formControlName="title" [ngClass]="{'is-invalid': _TaskForm.get('title')?.touched && _TaskForm.get('title')?.invalid }">
+                        <span class="invalid-feedback">title is required</span>
+                    </mat-form-field>
+
+                    <mat-form-field class="example-full-width">
+                        <mat-label>Description</mat-label>
+                        <textarea matInput formControlName="description" [ngClass]="{'is-invalid': _TaskForm.get('description')?.touched && _TaskForm.get('description')?.invalid }"></textarea>
+                        <span class="invalid-feedback">a task description is required</span>
+                    </mat-form-field>
+                    <button mat-raised-button color="accent" class="my-3" type="submit" [disabled]="_TaskForm?.invalid">Add Task To
+                        List</button>
+                </form>
+            </mat-card>
+        </div>
+    </div>
+</div>

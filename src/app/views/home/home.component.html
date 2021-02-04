@@ -1,0 +1,44 @@
+<div class="container-fluid">
+
+    <h1 class="text-center my-5">Project Management</h1>
+
+    <div cdkDropListGroup>
+        <div class="example-container">
+          <h2 class="text-center">To do</h2>
+      
+          <div
+            cdkDropList
+            [cdkDropListData]="todo"
+            class="example-list"
+            (cdkDropListDropped)="drop($event)">
+            <div class="example-box" *ngFor="let item of todo" cdkDrag>{{item}}</div>
+          </div>
+        </div>
+      
+        <div class="example-container">
+            <h2 class="text-center">Doing</h2>
+        
+            <div
+              cdkDropList
+              [cdkDropListData]="done"
+              class="example-list"
+              (cdkDropListDropped)="drop($event)">
+              <div class="example-box" *ngFor="let item of done" cdkDrag>{{item}}</div>
+            </div>
+          </div>
+
+
+
+        <div class="example-container">
+          <h2 class="text-center">Done</h2>
+      
+          <div
+            cdkDropList
+            [cdkDropListData]="done"
+            class="example-list"
+            (cdkDropListDropped)="drop($event)">
+            <div class="example-box" *ngFor="let item of done" cdkDrag>{{item}}</div>
+          </div>
+        </div>
+      </div>
+</div>
